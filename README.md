@@ -1,73 +1,97 @@
-# React + TypeScript + Vite
+# 🎬 GifsApp – React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación teórico–práctica desarrollada con React y Vite para aprender a consumir APIs externas, específicamente la API de Giphy.
 
-Currently, two official plugins are available:
+La aplicación permite buscar GIFs dinámicamente mediante peticiones HTTP y renderizarlos en pantalla usando componentes funcionales y hooks.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Tecnologías utilizadas
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- React (Hooks: useState, useEffect)
+- Vite
+- Fetch API
+- JavaScript ES6+
+- CSS
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📦 Instalación y uso
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Sigue estos pasos para clonar y ejecutar el proyecto en tu entorno local.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 1️⃣ Clonar el repositorio
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/TU-USUARIO/NOMBRE-DEL-REPO.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2️⃣ Entrar al directorio del proyecto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd NOMBRE-DEL-REPO
 ```
+
+### 3️⃣ Instalar dependencias
+
+```bash
+npm install
+```
+
+### 4️⃣ Ejecutar el servidor de desarrollo
+
+```bash
+npm run dev
+```
+
+Luego abre en tu navegador:
+
+```bash
+http://localhost:5173
+```
+
+---
+
+## 🔑 Configuración de la API Key
+
+Para que la aplicación funcione correctamente, necesitas una API Key de Giphy.
+
+Pasos:
+
+1. Crear una cuenta en Giphy Developers.
+
+2. Generar una API Key.
+
+3. Colocar la API Key en el archivo correspondiente.
+
+> [!TIP] ⚠️ Recomendación profesional: usar variables de entorno en lugar de exponer la clave directamente en el código.
+
+### Usando variables de entorno con Vite
+
+Crear un archivo `.env` en la raíz del proyecto:
+
+```typescript
+VITE_GIPHY_API_KEY=tu_api_key_aqui
+```
+
+Y usarla en el código:
+
+```typescript
+const apiKey = import.meta.env.VITE_GIPHY_API_KEY;
+```
+
+## 🧠 Conceptos prácticos aplicados
+
+Este proyecto refuerza:
+
+- Consumo de APIs REST
+
+- Manejo de estados con useState
+
+- Efectos secundarios con useEffect
+
+- Renderizado dinámico de listas
+
+- Manejo de props entre componentes
+
+- Separación de lógica en custom hooks (si aplica)
