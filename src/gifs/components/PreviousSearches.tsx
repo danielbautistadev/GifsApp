@@ -1,4 +1,4 @@
-// import React from 'react'
+// porque en este componente tengo el siguiente error: installHook.js:1 Each child in a list should have a unique "key" prop.
 
 import type { FC } from "react";
 
@@ -17,7 +17,7 @@ const PreviousSearches: FC<Props> = ({ searches, onLabelClicked }) => {
                 {
                   searches.map( (term) => (
                     // <li id={ term } onClick={ (onClick) => console.log(onClick) }>{ term }</li>
-                    <li id={ term } onClick={ () => onLabelClicked(term) }>{ term }</li>
+                    <li key={ term } id={ term } onClick={ () => onLabelClicked(term) }>{ term }</li>
                   ) )
                 }
             </ul>
