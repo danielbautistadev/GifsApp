@@ -8,9 +8,9 @@ La aplicación permite buscar GIFs dinámicamente mediante peticiones HTTP y ren
 
 ## 🚀 Tecnologías utilizadas
 
-- React (Hooks: useState, useEffect)
+- React (Hooks: useState, useEffect, useRef)
 - Vite
-- Fetch API
+- Axios
 - JavaScript ES6+
 - CSS
 
@@ -66,6 +66,52 @@ Pasos:
 
 > [!TIP] ⚠️ Recomendación profesional: usar variables de entorno en lugar de exponer la clave directamente en el código.
 
+## Configurando las dependencias para el Testing
+
+1. Vitest
+
+```bash
+npm install --save-dev vitest jsdom@21 
+```
+
+2. React Testing Library
+
+```bash
+npm install --save-dev @testing-library/react @testing-library/dom
+```
+
+3. Todo en un sólo comando
+
+```bash
+npm install --save-dev @testing-library/react @testing-library/dom vitest jsdom@21
+```
+
+4. Crear estos scripts en el `package.json`
+
+```json
+"scripts": {
+  "test": "vitest",
+  "test:ui": "vitest --ui",
+  "coverage": "vitest run --coverage"
+}
+```
+
+5. Configurar `vite.config.ts`
+
+```ts
+import { defineConfig } from 'vitest/config';
+import react from '@vitejs/plugin-react-swc';
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    environment: 'jsdom',
+    globals: true,
+  },
+});
+```
+
 ### Usando variables de entorno con Vite
 
 Crear un archivo `.env` en la raíz del proyecto:
@@ -84,7 +130,7 @@ const apiKey = import.meta.env.VITE_GIPHY_API_KEY;
 
 Este proyecto refuerza:
 
-- Consumo de APIs REST
+- Peticiones basicas con Axios
 
 - Manejo de estados con useState
 
