@@ -2,7 +2,7 @@
 
 interface Props {
     title: string;
-    desc: string;
+    desc?: string;
 }
 
 const CustomHeader = ( {title, desc}: Props ) => {
