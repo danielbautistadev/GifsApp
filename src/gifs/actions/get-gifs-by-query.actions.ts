@@ -6,22 +6,36 @@ import type { Gif } from '../interfaces/gif.interface';
 
 export const getGifsByQuery = async (query: string): Promise<Gif[]> => {
 
-    const response = await giphyApi<GiphyResponse>('/search', {
-        params: {
-            q: query,
-            limit: 25,
-        }
-    })
+    if ( query.length === 0 ) return [];
 
-    // console.log(response.data);
-    // fetch(`https://api.giphy.com/v1/gifs/search?api_key=YBwlDveBz7AZKOu1dT4zaFdebEwVJVWt&q=${query}&limit=25&lang=en`);
+    try {
 
-    return response.data.data.map( (gif) => ({
-        id: gif.id,
-        title: gif.title,
-        url: gif.images.original.url,
-        width: Number(gif.images.original.width),
-        height: Number(gif.images.original.height)
-    }) );
+        const response = await giphyApi<GiphyResponse>('/search', {
+            params: {
+                q: query,
+                limit: 25,
+            }
+        })
+
+        // console.log(response);
+        // console.log(response.data);
+        // fetch(`https://api.giphy.com/v1/gifs/search?api_key=YBwlDveBz7AZKOu1dT4zaFdebEwVJVWt&q=${query}&limit=25&lang=en`);
+
+        return response.data.data.map( (gif) => ({
+            id: gif.id,
+            title: gif.title,
+            url: gif.images.original.url,
+            width: Number(gif.images.original.width),
+            height: Number(gif.images.original.height)
+        }) );
+
+    } catch (error) {
+
+        console.error(error);
+        return [];
+
+    }
+
+    
 
 };

@@ -22,6 +22,7 @@ const useGifs = () => {
 
         const gifs = await getGifsByQuery(term);
         setGifs(gifs);
+        gifsCache.current[term] = gifs;
     }
 
     const handleSearch = async (query: string) => {
@@ -38,9 +39,9 @@ const useGifs = () => {
         const newTerm = trimmed.toLowerCase();
 
         setPreviousTerms((prev) => {
-        if (prev.includes(newTerm)) return prev;
-        const updateTerm = [newTerm, ...prev];
-        return updateTerm.slice(0, 8);
+            if (prev.includes(newTerm)) return prev;
+            const updateTerm = [newTerm, ...prev];
+            return updateTerm.slice(0, 8);
         });
 
         /**
@@ -56,10 +57,10 @@ const useGifs = () => {
          * 
          */
         
-        const gifs = await getGifsByQuery(query);
+        const gifs = await getGifsByQuery(newTerm);
         setGifs(gifs);    
 
-        gifsCache.current[query] = gifs;
+        gifsCache.current[newTerm] = gifs;
         // console.log({gifsCache});
 
     }

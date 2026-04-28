@@ -10,7 +10,7 @@ describe('MyCounterApp', () => {
         
         // screen.debug();
 
-        expect( screen.getByRole('heading', { level: 1}).innerHTML ).toContain('Counter: 8');
+        expect( screen.getByRole('heading', { level: 1 }).innerHTML ).toContain('Counter: 8');
         expect( screen.getByRole('button', { name: '+1' }) ).toBeDefined();
         expect( screen.getByRole('button', { name: '-1' }) ).toBeDefined();
         expect( screen.getByRole('button', { name: 'Reset' }) ).toBeDefined();
